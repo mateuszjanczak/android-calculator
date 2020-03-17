@@ -22,8 +22,6 @@
     </style>
 
     <style name="resultStyle">
->
-
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_above">@+id/tableLayout</item>
@@ -33,6 +31,20 @@
         <item name="android:paddingRight">10dp</item>
         <item name="android:singleLine">true</item>
         <item name="android:textSize">50sp</item>
+    </style>
+
+    <style name="tableLayoutStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:background">#757575</item>
+        <item name="android:stretchColumns">0,1,2,3</item>
+    </style>
+
+    <style name="tableRowStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">#757575</item>
     </style>
 
 
