@@ -9,4 +9,31 @@
         <item name="android:background">@color/colorBackground</item>
     </style>
 
+    <style name="buttonStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/colorOne</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:layout_margin">0dp</item>
+    </style>
+
+    <style name="buttonStyle.two">
+        <item name="android:background">@color/colorTwo</item>
+    </style>
+
+    <style name="resultStyle">
+>
+
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_above">@+id/tableLayout</item>
+        <item name="android:layout_alignParentTop">true</item>
+        <item name="android:gravity">center_vertical|end</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">50sp</item>
+    </style>
+
+
 </resources>
