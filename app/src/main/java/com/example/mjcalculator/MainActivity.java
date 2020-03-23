@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -19,23 +20,29 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        displayHandle = (TextView) findViewById(R.id.result);
+        displayHandle = findViewById(R.id.result);
     }
 
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState, @NonNull PersistableBundle outPersistentState) {
         super.onSaveInstanceState(outState, outPersistentState);
-        //outState.putDouble("display", getNumbers());
-        //outState.putString("operation", operation);
-        //outState.putDouble("firstNumber", firstNumber);
     }
+
+    @Override
+    public void onSaveInstanceState (@NonNull Bundle outState){
+        super.onSaveInstanceState(outState);
+        outState.putDouble("display", getNumbers());
+        outState.putString("operation", operation);
+        outState.putDouble("firstNumber", firstNumber);
+    }
+
 
     @Override
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        //setNumbers(savedInstanceState.getDouble("display"));
-        //operation = savedInstanceState.getString("operation");
-        //firstNumber = savedInstanceState.getDouble("firstNumber");
+        setNumbers(savedInstanceState.getDouble("display"));
+        operation = savedInstanceState.getString("operation");
+        firstNumber = savedInstanceState.getDouble("firstNumber");
     }
 
     public void keyClicked(View view) {
