@@ -7,4 +7,5 @@
     <color name="colorTwo">#9e9e9c</color>
     <color name="colorThree">#4bae51</color>
     <color name="colorBackground">#42a5f6</color>
+    <color name="selected">#fff</color>
 </resources>

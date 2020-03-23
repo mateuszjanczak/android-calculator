@@ -8,8 +8,7 @@
 
     <TextView
         android:id="@+id/result"
-        android:text="_"
-        style="@style/resultStyle"/>
+        style="@style/resultStyle" />
 
     <TableLayout
         android:id="@+id/tableLayout"
@@ -20,22 +19,22 @@
             <Button
                 android:id="@+id/btnAC"
                 style="@style/buttonStyle"
-                android:text="AC" />
+                android:text="@string/ac" />
 
             <Button
                 android:id="@+id/btnSign"
                 style="@style/buttonStyle"
-                android:text="+/-" />
+                android:text="@string/sign" />
 
             <Button
                 android:id="@+id/btnMod"
                 style="@style/buttonStyle"
-                android:text="%" />
+                android:text="@string/mod" />
 
             <Button
                 android:id="@+id/btnDivide"
                 style="@style/buttonStyle.two"
-                android:text="/" />
+                android:text="@string/divide" />
         </TableRow>
 
         <TableRow style="@style/tableRowStyle">
@@ -43,22 +42,22 @@
             <Button
                 android:id="@+id/btn7"
                 style="@style/buttonStyle"
-                android:text="7" />
+                android:text="@string/_7" />
 
             <Button
                 android:id="@+id/btn8"
                 style="@style/buttonStyle"
-                android:text="8" />
+                android:text="@string/_8" />
 
             <Button
                 android:id="@+id/btn9"
                 style="@style/buttonStyle"
-                android:text="9" />
+                android:text="@string/_9" />
 
             <Button
                 android:id="@+id/btnMultiply"
                 style="@style/buttonStyle.two"
-                android:text="x" />
+                android:text="@string/multiply" />
 
         </TableRow>
 
@@ -67,22 +66,22 @@
             <Button
                 android:id="@+id/btn4"
                 style="@style/buttonStyle"
-                android:text="4" />
+                android:text="@string/_4" />
 
             <Button
                 android:id="@+id/btn5"
                 style="@style/buttonStyle"
-                android:text="5" />
+                android:text="@string/_5" />
 
             <Button
                 android:id="@+id/btn6"
                 style="@style/buttonStyle"
-                android:text="6" />
+                android:text="@string/_6" />
 
             <Button
                 android:id="@+id/btnMinus"
                 style="@style/buttonStyle.two"
-                android:text="-" />
+                android:text="@string/minus" />
         </TableRow>
 
         <TableRow style="@style/tableRowStyle">
@@ -90,22 +89,22 @@
             <Button
                 android:id="@+id/btn1"
                 style="@style/buttonStyle"
-                android:text="1" />
+                android:text="@string/_1" />
 
             <Button
                 android:id="@+id/btn2"
                 style="@style/buttonStyle"
-                android:text="2" />
+                android:text="@string/_2" />
 
             <Button
                 android:id="@+id/btn3"
                 style="@style/buttonStyle"
-                android:text="3" />
+                android:text="@string/_3" />
 
             <Button
                 android:id="@+id/btnPlus"
                 style="@style/buttonStyle.two"
-                android:text="+" />
+                android:text="@string/plus" />
         </TableRow>
 
         <TableRow style="@style/tableRowStyle">
@@ -114,19 +113,19 @@
                 android:id="@+id/btn0"
                 style="@style/buttonStyle"
                 android:layout_column="0"
-                android:text="0" />
+                android:text="@string/_0" />
 
             <Button
                 android:id="@+id/btnPoint"
                 style="@style/buttonStyle"
                 android:layout_column="2"
-                android:text="," />
+                android:text="@string/point" />
 
             <Button
                 android:id="@+id/btnEqual"
                 style="@style/buttonStyle.two"
                 android:layout_column="3"
-                android:text="=" />
+                android:text="@string/equal" />
         </TableRow>
     </TableLayout>
 
