@@ -1,8 +1,10 @@
 package com.example.mjcalculator;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -11,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView displayHandle;
     private String operation = "";
-    private double firstNumber;
+    private double firstNumber = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,10 +22,26 @@ public class MainActivity extends AppCompatActivity {
         displayHandle = (TextView) findViewById(R.id.result);
     }
 
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState, @NonNull PersistableBundle outPersistentState) {
+        super.onSaveInstanceState(outState, outPersistentState);
+        //outState.putDouble("display", getNumbers());
+        //outState.putString("operation", operation);
+        //outState.putDouble("firstNumber", firstNumber);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        //setNumbers(savedInstanceState.getDouble("display"));
+        //operation = savedInstanceState.getString("operation");
+        //firstNumber = savedInstanceState.getDouble("firstNumber");
+    }
 
     public void keyClicked(View view) {
         Button button = (Button) view;
         String key = button.getText().toString();
+        String display = displayHandle.getText().toString();
 
         switch(key){
             case "0":
@@ -36,17 +54,23 @@ public class MainActivity extends AppCompatActivity {
             case "7":
             case "8":
             case "9":
-                String display = displayHandle.getText().toString();
                 if(display.equals("0")){
                     display = "";
                 }
                 display += key;
                 displayHandle.setText(display);
                 break;
+            case ",":
+                if(!display.contains(".")){
+                    display += ".";
+                    displayHandle.setText(display);
+                }
+                break;
             case "+":
             case "-":
             case "x":
             case "/":
+            case "%":
                 if(operation.equals("")){
                     firstNumber = getNumbers();
                 } else {
@@ -68,7 +92,55 @@ public class MainActivity extends AppCompatActivity {
                 clearOperation();
                 clearDisplay();
                 break;
+            case "+/-":
+                changeSign();
+                break;
+            case "log10":
+                log10();
+                break;
+            case "x!":
+                factorial();
+                break;
+            case "SQRT(x)":
+                sqrt();
+                break;
+            case "x^3":
+                pow(3);
+                break;
+            case "x^2":
+                pow(2);
+                break;
         }
+    }
+
+    private void pow(int i) {
+        double num = Math.pow(getNumbers(), i);
+        setNumbers(num);
+    }
+
+    private void sqrt() {
+        double num = Math.sqrt(getNumbers());
+        setNumbers(num);
+    }
+
+    private void factorial() {
+        double size = getNumbers();
+        double num = 1;
+        while(size > 0){
+            num *= size;
+            size--;
+        }
+        setNumbers(num);
+    }
+
+    private void log10() {
+        double num = Math.log10(getNumbers());
+        setNumbers(num);
+    }
+
+    private void changeSign() {
+        double num = (-1)*getNumbers();
+        setNumbers(num);
     }
 
     private void calculate() {
@@ -87,6 +159,9 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case "/":
                 result = firstNumber / secondNumber;
+                break;
+            case "%":
+                result = firstNumber % secondNumber;
                 break;
         }
 
