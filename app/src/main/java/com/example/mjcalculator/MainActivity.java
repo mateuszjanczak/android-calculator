@@ -89,9 +89,11 @@ public class MainActivity extends AppCompatActivity {
                 clearDisplay();
                 break;
             case "=":
-                calculate();
-                clearFirstNumber();
-                clearOperation();
+                if(!operation.equals("")){
+                    calculate();
+                    clearFirstNumber();
+                    clearOperation();
+                }
                 break;
             case "AC":
                 clearFirstNumber();
