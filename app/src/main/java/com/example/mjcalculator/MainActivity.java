@@ -47,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
     public void keyClicked(View view) {
         Button button = (Button) view;
         String key = button.getText().toString();
-        String display = displayHandle.getText().toString();
 
         switch(key){
             case "0":
@@ -60,45 +59,23 @@ public class MainActivity extends AppCompatActivity {
             case "7":
             case "8":
             case "9":
-                if(display.equals("0")){
-                    display = "";
-                }
-                display += key;
-                displayHandle.setText(display);
+                choiceNumber(key);
                 break;
             case ",":
-                if(!display.contains(".")){
-                    display += ".";
-                    displayHandle.setText(display);
-                }
+                choicePoint();
                 break;
             case "+":
             case "-":
             case "x":
             case "/":
             case "%":
-                if(operation.equals("")){
-                    firstNumber = getNumbers();
-                } else {
-                    if(getNumbers() != 0){
-                        calculate();
-                        firstNumber = getNumbers();
-                    }
-                }
-                setOperation(key);
-                clearDisplay();
+                choiceOperation(key);
                 break;
             case "=":
-                if(!operation.equals("")){
-                    calculate();
-                    clearFirstNumber();
-                    clearOperation();
-                }
+                choiceEqual();
                 break;
             case "AC":
-                clearFirstNumber();
-                clearOperation();
-                clearDisplay();
+                clearAll();
                 break;
             case "+/-":
                 changeSign();
@@ -110,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
                 factorial();
                 break;
             case "SQRT(x)":
-                sqrt();
+                pow(0.5);
                 break;
             case "x^3":
                 pow(3);
@@ -121,13 +98,55 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void pow(int i) {
-        double num = Math.pow(getNumbers(), i);
-        setNumbers(num);
+    private void clearAll() {
+        clearFirstNumber();
+        clearOperation();
+        clearDisplay();
     }
 
-    private void sqrt() {
-        double num = Math.sqrt(getNumbers());
+    private void choiceEqual() {
+        if(!operation.equals("")){
+            calculate();
+            clearFirstNumber();
+            clearOperation();
+        }
+    }
+
+    private void choiceOperation(String key) {
+        if(operation.equals("")){
+            firstNumber = getNumbers();
+        } else {
+            if(getNumbers() != 0){
+                calculate();
+                firstNumber = getNumbers();
+            }
+        }
+        setOperation(key);
+        clearDisplay();
+    }
+
+    private void choicePoint() {
+        String display = displayHandle.getText().toString();
+
+        if(!display.contains(".")){
+            display += ".";
+            displayHandle.setText(display);
+        }
+    }
+
+    private void choiceNumber(String key) {
+        String display = displayHandle.getText().toString();
+
+        if(display.equals("0")){
+            display = "";
+        }
+        display += key;
+
+        displayHandle.setText(display);
+    }
+
+    private void pow(double i) {
+        double num = Math.pow(getNumbers(), i);
         setNumbers(num);
     }
 
