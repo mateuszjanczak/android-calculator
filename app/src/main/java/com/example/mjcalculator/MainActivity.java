@@ -7,6 +7,7 @@ import android.os.PersistableBundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -163,7 +164,11 @@ public class MainActivity extends AppCompatActivity {
                 result = firstNumber * secondNumber;
                 break;
             case "/":
-                result = firstNumber / secondNumber;
+                if(secondNumber != 0) {
+                    result = firstNumber / secondNumber;
+                } else {
+                    Toast.makeText(getApplicationContext(),"Nie można dzielić przez 0!",Toast.LENGTH_SHORT).show();
+                }
                 break;
             case "%":
                 result = firstNumber % secondNumber;

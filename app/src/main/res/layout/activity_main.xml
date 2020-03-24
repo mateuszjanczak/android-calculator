@@ -8,7 +8,8 @@
 
     <TextView
         android:id="@+id/result"
-        style="@style/resultStyle" />
+        style="@style/resultStyle"
+        android:text="@string/result"/>
 
     <TableLayout
         android:id="@+id/tableLayout"
