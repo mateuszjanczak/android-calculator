@@ -68,8 +68,10 @@ public class MainActivity extends AppCompatActivity {
             case "-":
             case "x":
             case "/":
-            case "%":
                 choiceOperation(key);
+                break;
+            case "%":
+                choicePercent();
                 break;
             case "=":
                 choiceEqual();
@@ -96,6 +98,20 @@ public class MainActivity extends AppCompatActivity {
                 pow(2);
                 break;
         }
+    }
+
+    private void choicePercent() {
+        double secondNumber = getNumbers();
+
+        double result;
+
+        if(operation.equals("x") || operation.equals("/")){
+            result = secondNumber / 100;
+        } else {
+            result = (firstNumber * secondNumber) / 100;
+        }
+
+        setNumbers(result);
     }
 
     private void clearAll() {
@@ -146,7 +162,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void pow(double i) {
-        double num = Math.pow(getNumbers(), i);
+        double num = getNumbers();
+
+        if(num < 0 && i < 1) {
+            Toast.makeText(getApplicationContext(),"Nie można pierwiastkować liczby ujemnej!",Toast.LENGTH_SHORT).show();
+        } else {
+            num = Math.pow(getNumbers(), i);
+        }
+
         setNumbers(num);
     }
 
@@ -190,9 +213,6 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(getApplicationContext(),"Nie można dzielić przez 0!",Toast.LENGTH_SHORT).show();
                 }
-                break;
-            case "%":
-                result = firstNumber % secondNumber;
                 break;
         }
 
