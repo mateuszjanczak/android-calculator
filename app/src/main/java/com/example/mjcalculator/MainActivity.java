@@ -165,7 +165,7 @@ public class MainActivity extends AppCompatActivity {
         double num = getNumbers();
 
         if(num < 0 && i < 1) {
-            Toast.makeText(getApplicationContext(),"Nie można pierwiastkować liczby ujemnej!",Toast.LENGTH_SHORT).show();
+            makeToast("Nie można pierwiastkować liczby ujemnej!");
         } else {
             num = Math.pow(getNumbers(), i);
         }
@@ -175,17 +175,37 @@ public class MainActivity extends AppCompatActivity {
 
     private void factorial() {
         double size = getNumbers();
-        double num = 1;
-        while(size > 0){
-            num *= size;
-            size--;
+
+        if(size < 0){
+            makeToast("Nie można silnii z ujemnych");
+        } else if (size != (long) size){
+            makeToast("Nie można silnii z przecinkowych");
+        } else {
+            double num = 1;
+            while(size > 0){
+                num *= size;
+                size--;
+            }
+            setNumbers(num);
         }
-        setNumbers(num);
     }
 
     private void log10() {
-        double num = Math.log10(getNumbers());
+        double num = getNumbers();
+
+        if(num < 0){
+            makeToast("Nie można logarytmować liczby ujemnej!");
+        } else if(num == 0){
+            makeToast("Nie można zero");
+        } else {
+            num = Math.log10(getNumbers());
+        }
+
         setNumbers(num);
+    }
+
+    private void makeToast(String txt){
+        Toast.makeText(getApplicationContext(),txt,Toast.LENGTH_SHORT).show();
     }
 
     private void changeSign() {
@@ -223,11 +243,15 @@ public class MainActivity extends AppCompatActivity {
         return Double.parseDouble(displayHandle.getText().toString());
     }
 
-    private void setNumbers(double text) {
-        if(text == (long) text) {
-            displayHandle.setText(String.valueOf((long)text));
+    private void setNumbers(double numbers) {
+        if(Double.isInfinite(numbers) || Double.isNaN(numbers)) {
+            makeToast("Przekroczyłeś zakres zmiennej double");
         } else {
-            displayHandle.setText(String.valueOf(text));
+            if(numbers == (long) numbers) {
+                displayHandle.setText(String.valueOf((long)numbers));
+            } else {
+                displayHandle.setText(String.valueOf(numbers));
+            }
         }
     }
 
